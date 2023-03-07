@@ -12,6 +12,9 @@ De macro's van fish sticks tellen per zes fish sticks.
 De macro's van McNuggets tellen per 9 nuggets.
 De macro's van Jumbo Hotelcake tellen per plak.
 
+De waarde van een voedingsstof is zo opgeslagen in een constante variabele:
+const voedingsstof = [calorieën, koolhydraten in gram, vetten in gram, proteïne in gram]
+
 */
 
 const glasIceTeaPeach = [99, 24.3, 0.3, 0.3];
