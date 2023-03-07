@@ -117,9 +117,9 @@ Heb je gegeten of getraind? > getraind
 Hoeveel calorieën heb je verbrand? > 177
 
 Calorieën: 306 (1804 calorieën te gaan om je doel te bereiken)
-Koolhydraten: 0
-Vetten: 0
-Eiwitten/Proteïne: 0
+Koolhydraten: 51.3 g
+Vetten: 28 g
+Eiwitten/Proteïne: 5.2 g
 
 ...
 ```
