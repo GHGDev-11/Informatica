@@ -184,13 +184,11 @@ Bezorger / bouwvakker: 500 NEAT
 
 */
 
-let massaIsEenGetal = false;
-let massa = 0;
+let massaIsEenGetal = false; // Deze variabele wordt in VraagMassa() gebruikt om te checken of de ingevulde waarde voor variabele 'massa' een geldig getal is.
+let massa = 0; // standaard waarde 0, wordt aangepast zodra gebruiker een getal invoert.
 
-// Blijf opnieuw vragen tot er een geldig getal als massa wordt gegeven.
-
-while (!massaIsEenGetal) {
-  let massa = prompt("Hoeveel weeg je? ");
+function VraagMassa() {
+  massa = prompt("Hoeveel weeg je? ");
   
   if (!isNaN(massa)) {
     if (massa > 0) {
@@ -206,15 +204,19 @@ while (!massaIsEenGetal) {
   }
 }
 
+// Blijf opnieuw vragen tot er een geldig getal als massa wordt gegeven.
+
+while (!massaIsEenGetal) {
+  VraagMassa();
+}
+
 let BMR = massa * 20; // Basal Metabolic Rate
 let TEF = BMR * 0.1; // Thermic Effect of Feeding
 
 let EEEIsGeldig = false;
 let EEE = 0; // Exercise Energy Expenditure
 
-// Blijf opnieuw vragen tot er een geldig antwoord wordt gegeven voor de EEE waarde.
-
-while (!EEEIsGeldig) {
+function VraagEEE() {
   let vraagEEE = prompt("Hoe intens train je? Kies uit niet, normaal, tussenliggend en intens. ");
   
   if (vraagEEE == "niet") {
@@ -234,12 +236,16 @@ while (!EEEIsGeldig) {
   }
 }
 
+// Blijf opnieuw vragen tot er een geldig antwoord wordt gegeven voor de EEE waarde.
+
+while (!EEEIsGeldig) {
+  VraagEEE();
+}
+
 let NEATIsGeldig = false;
 let NEAT = 0; // Non-Exersise Activity Thermogenesis
 
-// Blijf opnieuw vragen tot er een geldig antwoord wordt gegeven voor de NEAT waarde.
-
-while (!NEATIsGeldig) {
+function VraagNEAT() {
   let vraagNEAT = prompt("Hoe vaak train je per week? Kies uit 0, 1-2, 3-5, 6-7. Als je vaker dan 7 keer per week traint, kies 'atleet'. ");
   
   if (vraagNEAT == "0") {
@@ -260,6 +266,12 @@ while (!NEATIsGeldig) {
   } else {
     console.log(vraagNEAT + " is geen geldige optie. Kies uit 1-2, 3-5, 6-7 en atleet.");
   }
+}
+
+// Blijf opnieuw vragen tot er een geldig antwoord wordt gegeven voor de NEAT waarde.
+
+while (!NEATIsGeldig) {
+  VraagNEAT();
 }
 
 // TDEE is het aantal calorieën die de gebruiker per dag nodig heeft om zijn of haar gewicht te onderhouden.
@@ -299,9 +311,9 @@ while (true)
     console.log("Calorieën: " + calorieën + " (" + (calorieën - TDEE) + " teveel)");
   }
   
-  console.log("Koolhydraten: " + koolHydraten);
-  console.log("Vetten: " + vetten);
-  console.log("Eiwitten/Proteïne: " + eiwitten);
+  console.log("Koolhydraten: " + koolHydraten + " g");
+  console.log("Vetten: " + vetten + " g");
+  console.log("Eiwitten/Proteïne: " + eiwitten + " g");
 
   console.log("\n");
 
@@ -339,11 +351,12 @@ while (true)
       console.log("Hieruit kun je kiezen:\n");
       console.log(voedingsStoffen);
     } else {
+      console.log("\n");
       console.log("Macro's voor " + voedingsStof + ":");
       console.log("Calorieën: " + VoedingsWaarde(voedingsStof)[0]);
-      console.log("Koolhydraten: " + VoedingsWaarde(voedingsStof)[1]);
-      console.log("Vetten: " + VoedingsWaarde(voedingsStof)[2]);
-      console.log("Eiwitten/Proteïne: " + VoedingsWaarde(voedingsStof)[3]);
+      console.log("Koolhydraten: " + VoedingsWaarde(voedingsStof)[1] + " g");
+      console.log("Vetten: " + VoedingsWaarde(voedingsStof)[2] + " g");
+      console.log("Eiwitten/Proteïne: " + VoedingsWaarde(voedingsStof)[3] + " g");
 
       VoegCalorieënToe(VoedingsWaarde(voedingsStof)[0]);
       VoegKoolhydratenToe(VoedingsWaarde(voedingsStof)[1]);
@@ -357,9 +370,7 @@ while (true)
     // Check of ingevulde waarde een getal is.
     
     if (!isNaN(aantalVerbrand)) {
-      
       // Als het een getal is, Trek het van calorieën af (verbrande calorieën)
-      
       calorieën -= aantalVerbrand;
     } else {
       console.log("'" + aantalVerbrand + "' is geen geldig getal.");
