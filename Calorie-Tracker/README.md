@@ -1,4 +1,4 @@
-# Calorie-Tracker
+# Geortian-Tracker
 
 Bereken je TDEE en hou bij hoeveel je eet! \
 Gemaakt door Georges Abdulahad en Christian Abdalla.
